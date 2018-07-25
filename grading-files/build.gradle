@@ -1,0 +1,36 @@
+group 'edu.utopiatech.cs1337'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+// This is what moves the files to their correct location
+def queueFile = "${projectDir}/LLQueue.java"
+def stackFile = "${projectDir}/LLStack.java"
+
+task copyQueue(type: Copy) {
+    from queueFile
+    into "${projectDir}/src/main/java/edu/utopiatech/cs1337/hw1/"
+}
+
+task copyStack(type: Copy) {
+  from stackFile
+  into "${projectDir}/src/main/java/edu/utopiatech/cs1337/hw1/"
+}
+
+if (file(queueFile).exists()) {
+  compileJava.dependsOn copyQueue
+}
+
+if (file(stackFile).exists()) {
+  compileJava.dependsOn copyStack
+}

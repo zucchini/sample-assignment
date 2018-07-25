@@ -1,0 +1,47 @@
+name: Sample JUnit Assignment
+author: Cem Gokmen
+components:
+- name: Stack Implementation
+  weight: 1
+  backend: JUnitXMLGrader
+  backend-options:
+    posix-gradle-exec: ./gradlew
+    windows-gradle-exec: gradlew
+    gradle-task: test
+  files: [LLStack.java] # The gradle config moves this to correct position
+  grading-files:
+  - gradlew
+  - gradlew.bat
+  - '*.gradle'
+  - 'src/main/java/edu/utopiatech/cs1337/hw1/StackInterface.java'
+  - 'src/test/java/edu/utopiatech/cs1337/hw1/LLStackTest.java'
+  - 'gradle/wrapper/*'
+  parts:
+  - {test: edu.utopiatech.cs1337.hw1.LLStackTest.testEmptyIsEmpty, weight: 1}
+  - {test: edu.utopiatech.cs1337.hw1.LLStackTest.testNonEmptyIsEmpty, weight: 1}
+  - {test: edu.utopiatech.cs1337.hw1.LLStackTest.testSinglePushPop, weight: 2}
+  - {test: edu.utopiatech.cs1337.hw1.LLStackTest.testEmptyPopException, weight: 1}
+  - {test: edu.utopiatech.cs1337.hw1.LLStackTest.testLIFO, weight: 5}
+  - {test: edu.utopiatech.cs1337.hw1.LLStackTest.testFullFunctionality, weight: 10}
+- name: Queue Implementation
+  weight: 1
+  backend: JUnitXMLGrader
+  backend-options:
+    posix-gradle-exec: ./gradlew
+    windows-gradle-exec: gradlew
+    gradle-task: test
+  files: [LLQueue.java] # The gradle config moves this to correct position
+  grading-files:
+  - gradlew
+  - gradlew.bat
+  - '*.gradle'
+  - 'src/main/java/edu/utopiatech/cs1337/hw1/QueueInterface.java'
+  - 'src/test/java/edu/utopiatech/cs1337/hw1/LLQueueTest.java'
+  - 'gradle/wrapper/*'
+  parts:
+  - {test: edu.utopiatech.cs1337.hw1.LLQueueTest.testEmptyIsEmpty, weight: 1}
+  - {test: edu.utopiatech.cs1337.hw1.LLQueueTest.testNonEmptyIsEmpty, weight: 1}
+  - {test: edu.utopiatech.cs1337.hw1.LLQueueTest.testSingleEnqueueDequeue, weight: 2}
+  - {test: edu.utopiatech.cs1337.hw1.LLQueueTest.testEmptyDequeueException, weight: 1}
+  - {test: edu.utopiatech.cs1337.hw1.LLQueueTest.testFIFO, weight: 5}
+  - {test: edu.utopiatech.cs1337.hw1.LLQueueTest.testFullFunctionality, weight: 10}
